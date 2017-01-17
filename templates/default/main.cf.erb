@@ -1,0 +1,81 @@
+
+queue_directory = /var/spool/postfix
+
+command_directory = /usr/sbin
+
+daemon_directory = /usr/libexec/postfix
+
+data_directory = /var/lib/postfix
+
+mail_owner = postfix
+
+myhostname = <%= node['postfix']['myhostname'] %>
+
+myorigin = $myhostname
+
+inet_interfaces = localhost
+
+inet_protocols = ipv4
+
+mydestination = localhost.$mydomain, localhost
+
+unknown_local_recipient_reject_code = 550
+
+mynetworks_style = host
+
+relayhost = [<%= node['postfix']['relayhost'] %>]
+
+sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay
+smtp_sender_dependent_authentication = yes
+smtp_generic_maps = hash:/etc/postfix/generic
+append_dot_mydomain = no
+
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_sasl_mechanism_filter = plain login
+
+smtp_tls_loglevel = 1
+smtp_use_tls = yes
+smtp_tls_scert_verifydepth = 4
+smtp_tls_exclude_ciphers = aNULL
+smtp_tls_mandatory_protocols = SSLv3, TLSv1
+smtp_tls_CAfile = /etc/ssl/certYA.pem
+
+smtp_helo_timeout = 15
+smtp_connect_timeout = 15
+smtp_data_init_timeout = 15
+smtp_data_xfer_timeout = 15
+smtp_data_done_timeout = 15
+smtp_mail_timeout = 15
+smtp_quit_timeout = 15
+smtp_rcpt_timeout = 15
+smtp_rset_timeout = 10
+smtp_starttls_timeout = 15
+smtp_xforward_timeout = 15
+
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+debug_peer_level = 2
+
+debugger_command =
+	 PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
+	 ddd $daemon_directory/$process_name $process_id & sleep 5
+
+
+sendmail_path = /usr/sbin/sendmail.postfix
+
+newaliases_path = /usr/bin/newaliases.postfix
+
+mailq_path = /usr/bin/mailq.postfix
+
+setgid_group = postdrop
+
+html_directory = no
+
+manpage_directory = /usr/share/man
+
+sample_directory = /usr/share/doc/postfix-2.6.6/samples
+
+readme_directory = /usr/share/doc/postfix-2.6.6/README_FILES
