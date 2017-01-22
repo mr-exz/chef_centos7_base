@@ -44,11 +44,15 @@ If all correct you should get test email notification in ```default['aliases']['
 ### Chef solo
 
 ```
-# wget https://packages.chef.io/stable/el/7/chef-12.16.42-1.el7.x86_64.rpm
-# yum install chef-12.16.42-1.el7.x86_64.rpm
-# yum install curl git gcc gcc-c++ ruby-devel tar autoconf
-# /opt/chef/embedded/bin/gem install --no-rdoc --no-ri berkshelf
-# ln -s /opt/chef/embedded/bin/berks /usr/local/bin
+# curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+# curl -L get.rvm.io | bash -s stable
+# source /etc/profile.d/rvm.sh
+# rvm reload
+# rvm requirements run
+# rvm install 2.4.0
+# rvm use 2.4.0 --default
+# gem install chef
+# gem install --no-rdoc --no-ri berkshelf
 # mkdir /tmp/chef-solo
 # cd /tmp/chef-solo
 # git clone https://github.com/mr-exz/chef_centos7_base.git
