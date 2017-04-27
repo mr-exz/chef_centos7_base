@@ -10,7 +10,7 @@
 ```
 default['aliases']['root_email'] = 'root@exz.su'			# set root e-mail	
 default['selinux']['node'] = 'permissive'					# set selinux permissive  
-default['sshd']['port'] = '40022' 							# set non default ssh port
+default['sshd']['port'] = '40022'							# set non default ssh port
 default['postfix']['myhostname'] = 'se001.exz.su'			# set server hostname
 default['postfix']['relayhost'] = 'smtp.yandex.ru'			# do not change if you want use yandex
 default['postfix']['relay_email'] = 'support@exz.su'		# set relay email
