@@ -8,14 +8,29 @@
 ## Attributes
 
 ```
-default['aliases']['root_email'] = 'root@exz.su'			# set root e-mail	
-default['selinux']['node'] = 'permissive'					# set selinux permissive  
-default['sshd']['port'] = '40022'							# set non default ssh port
-default['postfix']['myhostname'] = 'se001.exz.su'			# set server hostname
-default['postfix']['relayhost'] = 'smtp.yandex.ru'			# do not change if you want use yandex
-default['postfix']['relay_email'] = 'support@exz.su'		# set relay email
-default['postfix']['relay_email_password'] = ''				# set relay email password
-default['postfix']['generic_user_root'] = 'root'			# do not change if you want send email from root
+# set root e-mail	
+default['aliases']['root_email'] = 'root@exz.su'
+
+# set selinux permissive 	
+default['selinux']['node'] = 'permissive'
+
+# set non default ssh port			 
+default['sshd']['port'] = '40022'			
+
+# set server hostname		
+default['postfix']['myhostname'] = 'se001.exz.su'	
+
+# do not change if you want use yandex
+default['postfix']['relayhost'] = 'smtp.yandex.ru'	
+
+# set relay email
+default['postfix']['relay_email'] = 'support@exz.su'
+
+# set relay email password
+default['postfix']['relay_email_password'] = ''		
+
+# do not change if you want send email from root
+default['postfix']['generic_user_root'] = 'root'			
 ``` 
 
 ## Recipes
